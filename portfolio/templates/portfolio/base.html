@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}The Faction{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=1.3">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="{% static 'js/main.js' %}" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{% url 'portfolio:home' %}" class="logo">
+                <span class="logo-text">The Faction</span>
+            </a>
+            <ul>
+                <li><a href="{% url 'portfolio:home' %}">Home</a></li>
+                <li><a href="{% url 'portfolio:about' %}">About</a></li>
+                <li><a href="{% url 'portfolio:project_list' %}">Projects</a></li>
+                <li><a href="{% url 'portfolio:info_list' %}">Resources</a></li>
+                <li><a href="{% url 'portfolio:admin_login' %}">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 The Faction - IoT & Microcontroller Projects</p>
+        
+        <div class="social-footer">
+            <a href="https://github.com/magealexstra" target="_blank" class="social-icon github" title="GitHub">
+                <i class="fab fa-github fa-2x"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/magealexstra/" target="_blank" class="social-icon linkedin" title="LinkedIn">
+                <i class="fab fa-linkedin fa-2x"></i>
+            </a>
+            <a href="https://www.instagram.com/magealexstra/" target="_blank" class="social-icon instagram" title="Instagram">
+                <i class="fab fa-instagram fa-2x"></i>
+            </a>
+            <a href="https://www.facebook.com/daniel.hall.1800/" target="_blank" class="social-icon facebook" title="Facebook">
+                <i class="fab fa-facebook fa-2x"></i>
+            </a>
+        </div>
+    </footer>
+</body>
+</html>

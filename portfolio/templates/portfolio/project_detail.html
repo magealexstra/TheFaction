@@ -1,0 +1,44 @@
+{% extends 'portfolio/base.html' %}
+
+{% block title %}{{ project.title }} - The Faction{% endblock %}
+
+{% block content %}
+<section class="project-detail">
+    <h1>{{ project.title }}</h1>
+    <p><strong>Category:</strong> {{ project.category }}</p>
+    <p>{{ project.description }}</p>
+
+    <p><strong>Technologies Used:</strong>
+        {% for tech in project.technologies_used.all %}
+            {{ tech.name }}{% if not forloop.last %}, {% endif %}
+        {% empty %}
+            None listed.
+        {% endfor %}
+    </p>
+
+    <div class="project-images">
+        <h2>Gallery</h2>
+        {% for image in project.images.all %}
+            <figure>
+                <img src="{{ image.image.url }}" alt="{{ image.caption }}">
+                <figcaption>{{ image.caption }}</figcaption>
+            </figure>
+        {% empty %}
+            <p>No images available.</p>
+        {% endfor %}
+    </div>
+
+    {% if project.github_repo_link %}
+        <p><a href="{{ project.github_repo_link }}" target="_blank">View on GitHub</a></p>
+    {% endif %}
+
+    {% if project.purchase_links %}
+        <h3>Purchase Links</h3>
+        <ul>
+            {% for key, value in project.purchase_links.items %}
+                <li><a href="{{ value }}" target="_blank">{{ key }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</section>
+{% endblock %}

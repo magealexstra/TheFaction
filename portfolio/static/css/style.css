@@ -1,0 +1,475 @@
+/* The Faction - Modern dark theme with cool tones */
+
+/* Color palette using deep blues and forest tones */
+:root {
+    --background-color: #374585; /* Rich slate blue-grey */
+    --primary-color: #2f4056; /* Deep steel blue */
+    --secondary-color: #485d73; /* Medium slate blue */
+    --accent-color: #124d3d; /* Forest teal */
+    --highlight-color: #80a6cf; /* Soft powder blue */
+    --text-color: #a4a6a8; /* Light silver grey */
+    --muted-text: #9ba4af; /* Soft grey with blue undertones */
+    --link-color: #92c7a1; /* Sage green with blue undertones */
+    --link-hover-color: #c9d4e0; /* Pale ice blue */
+    --warm-accent: #65514a; /* Muted cedar brown */
+    --cool-shadow: #161e29; /* Deep charcoal blue */
+    --pale-skin: #c2cad3; /* Soft pearl grey */
+    --card-bg: rgba(59, 74, 94, 0.85); /* Semi-transparent slate blue */
+    --card-border: rgba(39, 69, 46, 0.95); /* Deep forest green */
+    --shadow-color: rgba(36, 86, 65, 0.3); /* Subtle emerald shadow */
+}
+
+/* Basic typography inspired by Twilight aesthetic */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-weight: 400;
+}
+
+/* Refined typography with Twilight mood */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 400; /* Lighter font weight */
+    line-height: 1.3;
+    margin-top: 0;
+    color: var(--text-color);
+}
+
+h1 {
+    font-size: 2.25rem;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+}
+
+h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+    color: var(--link-color);
+    letter-spacing: -0.01em;
+}
+
+p {
+    margin-bottom: 1.5rem;
+    color: var(--muted-text);
+    line-height: 1.7;
+}
+
+/* Twilight-inspired navigation */
+header {
+    background-color: var(--background-color);
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 3px 10px var(--shadow-color);
+    border-bottom: 1px solid rgba(143, 163, 184, 0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+nav .logo {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--link-color);
+    text-decoration: none;
+    letter-spacing: 0.2px;
+}
+
+.logo-text {
+    background: linear-gradient(45deg, var(--link-color), var(--pale-skin));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 500;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    color: var(--muted-text);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 400;
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+nav ul li a:hover {
+    color: var(--link-color);
+    border-bottom: 1px solid var(--warm-accent);
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Main content styling */
+main {
+    padding: 2rem;
+    flex: 1 0 auto;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Twilight-inspired hero section */
+.hero {
+    position: relative;
+    padding: 5rem 1rem;
+    background: linear-gradient(to bottom, var(--primary-color), var(--background-color));
+    margin-bottom: 3rem;
+    text-align: center;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top right, rgba(194, 202, 211, 0.05), transparent 70%);
+    pointer-events: none;
+}
+
+.hero h1 {
+    font-size: 2.4rem;
+    margin-bottom: 1.5rem;
+    color: var(--pale-skin);
+    letter-spacing: 0.5px;
+    font-weight: 400;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hero p {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+    color: var(--muted-text);
+    line-height: 1.6;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.hero-image {
+    margin-top: 2.5rem;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 6px 16px var(--shadow-color);
+    position: relative;
+}
+
+.hero-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(28, 35, 44, 0.2), rgba(15, 20, 25, 0.4));
+    pointer-events: none;
+}
+
+.hero-image img {
+    opacity: 0.9;
+    filter: saturate(0.95);
+}
+
+/* Twilight-inspired cards */
+.hero-card {
+    background-color: var(--card-bg);
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    padding: 1.75rem;
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--warm-accent), var(--accent-color));
+    opacity: 0.8;
+}
+
+.hero-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top right, rgba(143, 163, 184, 0.03), transparent 70%);
+    pointer-events: none;
+}
+
+.hero-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px var(--shadow-color);
+}
+
+.hero-card-content h2 {
+    margin-top: 0;
+    color: var(--pale-skin);
+    font-size: 1.35rem;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.hero-card-content .category {
+    font-style: normal;
+    color: var(--highlight-color);
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    background-color: rgba(143, 163, 184, 0.08);
+    border-radius: 4px;
+    letter-spacing: 0.3px;
+}
+
+.hero-card-content p {
+    color: var(--muted-text);
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+/* About page styling */
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.about-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.about-photo {
+    flex: 0 0 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px var(--shadow-color);
+    position: relative;
+}
+
+.about-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+    filter: saturate(0.95);
+}
+
+.about-photo::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(15, 20, 25, 0.3), transparent 70%);
+    pointer-events: none;
+}
+
+.about-photo:hover img {
+    transform: scale(1.03);
+}
+
+/* Project filters */
+.filters {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+.filters ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0 0;
+}
+
+.filters ul li a {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--muted-text);
+    background-color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.filters ul li a:hover {
+    background-color: var(--warm-accent);
+    color: var(--pale-skin);
+}
+
+/* Twilight-inspired footer */
+footer {
+    background-color: var(--background-color);
+    padding: 2.5rem 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: auto;
+    border-top: 1px solid rgba(143, 163, 184, 0.08);
+    box-shadow: 0 -4px 16px var(--shadow-color);
+    position: relative;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top, rgba(143, 163, 184, 0.02), transparent 70%);
+    pointer-events: none;
+}
+
+footer p {
+    color: var(--muted-text);
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.2px;
+}
+
+/* Twilight-inspired social icons */
+.social-footer {
+    margin: 1.75rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.social-footer a {
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: rgba(89, 101, 115, 0.15);
+    color: var(--text-color);
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+.social-footer a:hover {
+    transform: translateY(-3px) rotate(5deg);
+    box-shadow: 0 5px 10px var(--shadow-color);
+    background-color: rgba(89, 101, 115, 0.25);
+}
+
+/* Social icons with official brand colors */
+.social-icon.github i { color: #181717; }
+.social-icon.linkedin i { color: #0A66C2; }
+.social-icon.instagram i {
+    background: linear-gradient(45deg, #FCAF45, #FD1D1D, #833AB4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.social-icon.facebook i { color: #1877F2; }
+
+/* Twilight-inspired buttons */
+.btn {
+    display: inline-block;
+    padding: 0.65rem 1.3rem;
+    background: linear-gradient(to right, var(--accent-color), var(--secondary-color));
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 3px 6px var(--shadow-color);
+    letter-spacing: 0.4px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+    background: linear-gradient(to right, var(--secondary-color), var(--accent-color));
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px var(--shadow-color);
+}
+
+/* Twilight-inspired info/resources section */
+.info-resources h1 {
+    color: var(--pale-skin);
+    font-weight: 400;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    margin-bottom: 2rem;
+}
+
+.resource-card {
+    background: var(--card-bg);
+    border-radius: 6px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 10px var(--shadow-color);
+    border-left: 3px solid var(--highlight-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.resource-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top right, rgba(143, 163, 184, 0.03), transparent 70%);
+    pointer-events: none;
+}
+
+.resource-card h3 {
+    color: var(--pale-skin);
+    font-weight: 500;
+    margin-top: 0;
+    font-size: 1.3rem;
+}
+
+.resource-card strong {
+    color: var(--highlight-color);
+    font-weight: 500;
+}

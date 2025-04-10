@@ -1,0 +1,26 @@
+{% extends 'portfolio/base.html' %}
+
+{% block title %}Info Resources - The Faction{% endblock %}
+
+{% block content %}
+<section class="info-resources">
+    <h1>Learning Resources</h1>
+    <div class="resource-list">
+        {% for resource in resources %}
+            <div class="resource-card">
+                <h3>{{ resource.title }}</h3>
+                <p><strong>Category:</strong> {{ resource.category }}</p>
+                <p>{{ resource.content|truncatewords:30 }}</p>
+                {% if resource.link %}
+                    <p><a href="{{ resource.link }}" target="_blank">Learn More</a></p>
+                {% endif %}
+                {% if resource.image %}
+                    <img src="{{ resource.image.url }}" alt="{{ resource.title }}">
+                {% endif %}
+            </div>
+        {% empty %}
+            <p>No resources available.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'portfolio/base.html' %}
+
+{% block title %}Projects - The Faction{% endblock %}
+
+{% block content %}
+<section class="projects">
+    <h1>Projects</h1>
+
+    <div class="filters">
+        <p>Filter by category:</p>
+        <ul>
+            <li><a href="?">All</a></li>
+            <li><a href="?category=Software">Software</a></li>
+            <li><a href="?category=Home Automation">Home Automation</a></li>
+            <li><a href="?category=Automotive Integration">Automotive Integration</a></li>
+            <li><a href="?category=RV Enhancements">RV Enhancements</a></li>
+        </ul>
+    </div>
+
+    <div class="project-list">
+        {% for project in projects %}
+                {% with project.images.first as first_image %}
+                {% if first_image %}
+                    <div class="hero-card-image">
+                        <img src="{{ first_image.image.url }}" alt="{{ first_image.caption }}">
+                    </div>
+                {% endif %}
+                {% endwith %}
+            <div class="hero-card">
+                <div class="hero-card-content">
+                    <h2>{{ project.title }}</h2>
+                    <p class="category">{{ project.category }}</p>
+                    <p>{{ project.description|truncatewords:25 }}</p>
+                    <a href="{% url 'portfolio:project_detail' project.pk %}" class="btn">View Details</a>
+                </div>
+            </div>
+        {% empty %}
+            <p>No projects found.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
