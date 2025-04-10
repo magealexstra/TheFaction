@@ -11,6 +11,14 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+
+# Import secrets file
+try:
+    from .secrets import *
+except ImportError:
+    # For production or environments without secrets.py
+    pass
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +28,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-8u%+vjaupu9=*ox_iy77-y4c0r59rv8p0vz@)+n2#xwtqudh3('
+# SECRET_KEY is imported from secrets.py, but a fallback is defined for environments without the secrets file
+if 'SECRET_KEY' not in locals():
+    SECRET_KEY = 'django-insecure-8u%+vjaupu9=*ox_iy77-y4c0r59rv8p0vz@)+n2#xwtqudh3('
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -73,12 +83,27 @@ WSGI_APPLICATION = 'thefaction.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+# Database configuration - use credentials from secrets.py if available
+if all(hasattr(locals(), var) for var in ['DB_NAME', 'DB_USER', 'DB_PASSWORD', 'DB_HOST', 'DB_PORT']):
+    # Use PostgreSQL configuration from secrets.py
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': DB_NAME,
+            'USER': DB_USER,
+            'PASSWORD': DB_PASSWORD,
+            'HOST': DB_HOST,
+            'PORT': DB_PORT,
+        }
     }
-}
+else:
+    # Fallback to SQLite for development
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation
@@ -111,6 +136,16 @@ USE_I18N = True
 
 USE_TZ = True
 
+
+# Email configuration - use settings from secrets.py if available
+if all(hasattr(locals(), var) for var in ['EMAIL_HOST', 'EMAIL_PORT', 'EMAIL_HOST_USER', 'EMAIL_HOST_PASSWORD']):
+    # Email settings from secrets.py
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_USE_TLS = True
+    # Other variables are imported from secrets.py
+else:
+    # Development email backend - outputs to console
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
